@@ -23,5 +23,6 @@ namespace _1811061325_LeTrongNhan_Lab7.Controllers
             DataClasses1DataContext db = new DataClasses1DataContext();
             return db.saches.FirstOrDefault(x => x.Id == id);
         }
+        //aa
     }
 }
