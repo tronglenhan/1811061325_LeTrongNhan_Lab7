@@ -6,38 +6,38 @@
 <body>
     <div>
         <h2>Danh sách</h2>
-        <ul id="sach" />
+        <ul id="sachs" />
     </div>
     <div>
         <h2>Tìm kiếm bằng mã sách</h2>
         <input type="text" id="prodId" size="5" />
         <input type="button" value="Search" onclick="find();" />
-        <p id="sach" />
+        <p id="Sachs" />
     </div>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
     <script>
-    var url = 'api/Sach';
+        var uri = 'api/sach';
         $(document).ready(function () {
-        $.getJSON(uri)
-            .done(function (data) {
-                $.each(data, function (key, item) {
-            $('<li>', { text: formatItem(item) }).appendTo($('#sachs'));
-            });
-            });
-            });
-     function formatItem(item) {
+            $.getJSON(uri)
+                .done(function (data) {
+                    $.each(data, function (key, item) {
+                        $('<li>', { text: formatItem(item) }).appendTo($('#sachs'));
+                    });
+                });
+        });
+        function formatItem(item) {
             return item.Title + ': $' + item.Price;
-            }
-            function find() {
-        var id = $('#prodId').val();
-    $.getJSON(uri + '/' + id)
-        .done(function (data) {
-        $('#sach').text(formatItem(data));
-        })
-        .fail(function (jqXHR, textStatus, err) {
-        $('#sach').text('Error: ' + err);
-            });
-                }
+        }
+        function find() {
+            var id = $('#prodId').val();
+            $.getJSON(uri + '/' + id)
+                .done(function (data) {
+                    $('#sachs').text(formatItem(data));
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#sachs').text('Error: ' + err);
+                });
+        }
     </script>
 </body>
 </html>
